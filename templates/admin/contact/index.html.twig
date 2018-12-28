@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <h1>
+            {% trans %}Contacts Management{% endtrans %}
+        </h1>
+
+        {% if contacts is not empty %}
+            <table class="table" id="contact-table">
+                <thead>
+                <tr>
+                    <th>{% trans %}Name{% endtrans %}</th>
+                    <th>{% trans %}E-mail adress{% endtrans %}</th>
+                    <th>{% trans %}Ip adress{% endtrans %}</th>
+                    <th>{% trans %}Question{% endtrans %}</th>
+                    <th>{% trans %}(actions){% endtrans %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.ipAdress }}</td>
+                        <td>{{ contact.question }}</td>
+                        <td>
+                            {% if contact.treatedAt is null %}
+                                <form action="{{ path('admin.contact.treat', {'contact':contact.id}) }}" method="post">
+                                    <input type="hidden" name="_token"
+                                           value="{{ csrf_token('admin.contact.treat.' ~ contact.id) }}">
+                                    <input type="hidden" name="_method" value="PATCH">
+                                    <button type="submit" class="btn btn-primary">
+                                        {% trans %}
+                                            Treat
+                                        {% endtrans %}
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="{{ path('home.index') }}">
+        {% trans %}Homepage{% endtrans %}
+    </a>
+    {% if app.user %}
+        <a class="btn btn-danger" href="{{ path('app_logout') }}">
+            {% trans %}Logout{% endtrans %}
+        </a>
+    {% else %}
+        <a class="btn btn-primary" href="{{ path('app_login') }}">
+            {% trans %}Login{% endtrans %}
+        </a>
+    {% endif %}
+</nav>

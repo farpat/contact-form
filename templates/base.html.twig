@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block description %}{% endblock %}">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ render_asset('app.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+<div id="app">
+    {% include '_partials/nav.html.twig' %}
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+</div>
+{% block scripts %}{% endblock %}
+<script src="{{ render_asset('app.js') }}"></script>
+</body>
+</html>

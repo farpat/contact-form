@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <h1>
+            {% trans %}Homepage{% endtrans %}
+        </h1>
+
+        <section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cupiditate expedita maiores
+                nesciunt qui quo reiciendis repellendus velit veniam vero? Ad deserunt ea magnam molestias non provident
+                quas quo velit.
+            </p>
+            <p>Aut, consequatur corporis cumque distinctio nesciunt quos saepe unde? Adipisci corporis deserunt enim
+                nesciunt, odit placeat sapiente sed totam ut veritatis. Doloremque facilis impedit quisquam repellendus
+                totam ullam ut veritatis.
+            </p>
+            <p>Ducimus expedita fugit ratione sunt? A architecto, blanditiis commodi consequuntur est laborum numquam
+                quas repudiandae voluptatem voluptatibus. Autem, consequuntur, tempore! Eos, harum labore laboriosam
+                magnam perspiciatis possimus qui quo sed.
+            </p>
+            <p>Architecto beatae consequatur corporis culpa cum cumque distinctio doloribus, dolorum earum eius, est
+                facilis fuga illum iusto magni molestiae mollitia nemo officia possimus provident quidem quod similique
+                sunt, voluptatem voluptatum!
+            </p>
+            <p>Consequatur dicta distinctio earum magni sapiente ullam? Adipisci delectus dignissimos doloremque esse
+                et facere fugiat ipsum laboriosam, maxime molestias nisi, nostrum provident quidem reprehenderit soluta,
+                temporibus voluptate voluptatibus! Architecto, aut.
+            </p>
+            <p>Accusamus, alias aliquid animi aut autem blanditiis consequuntur delectus dolorum ducimus eaque
+                eligendi enim est eveniet impedit, iusto labore minima nam nostrum odio praesentium quae quos
+                reprehenderit similique tenetur veniam.
+            </p>
+            <p>Ad alias autem, deleniti dicta eligendi enim in itaque, nam, neque reprehenderit tempore voluptate
+                voluptates? Nulla quidem reiciendis saepe sunt. Aspernatur minus optio praesentium soluta voluptates.
+                Aut eos in natus?
+            </p>
+            <p>Consequuntur nisi optio sunt. Architecto aspernatur aut, autem consequatur doloremque eaque earum est
+                inventore maiores mollitia neque nisi nulla officiis porro quibusdam quod reprehenderit sapiente soluta
+                tempora unde voluptates voluptatibus.
+            </p>
+            <p>Asperiores at consequatur doloremque dolores earum eligendi est eveniet ex excepturi, fuga fugiat ipsa
+                iste, molestiae nisi nostrum reprehenderit ut vitae. Atque, non, velit. Dolorum error hic inventore sint
+                unde?
+            </p>
+            <p>A accusamus accusantium ad animi architecto consequuntur cum dignissimos dolor ea eius est expedita hic
+                inventore labore libero modi molestiae mollitia nisi quas, quia quis repudiandae sequi sint sit ut?
+            </p>
+        </section>
+
+        <section id="contact-form">
+            {% for message in app.flashes('success') %}
+                {% include '_partials/alert.html.twig' with {'message': message} %}
+            {% endfor %}
+
+            {% for message in app.flashes('success') %}
+                {% include '_partials/alert.html.twig' with {'type':'danger','message': message} %}
+            {% endfor %}
+
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.name) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.email) }}
+                </div>
+            </div>
+            <div>
+                {{ form_row(form.question) }}
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success">
+                    {% trans %}
+                        Contact us !
+                    {% endtrans %}
+                </button>
+            </div>
+            {{ form_end(form) }}
+        </section>
+    </div>
+{% endblock %}
