@@ -55,7 +55,7 @@
                 {% include '_partials/alert.html.twig' with {'message': message} %}
             {% endfor %}
 
-            {% for message in app.flashes('success') %}
+            {% for message in app.flashes('danger') %}
                 {% include '_partials/alert.html.twig' with {'type':'danger','message': message} %}
             {% endfor %}
 
